@@ -1,1 +1,3 @@
-print("Hello world, from server!")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Replit = require(ReplicatedStorage.Shared.Replit)

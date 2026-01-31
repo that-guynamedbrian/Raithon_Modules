@@ -1,1 +1,5 @@
-return true
+
+return {
+    CustomSignals = {};
+    RealSignals = {};
+}
