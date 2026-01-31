@@ -1,38 +1,19 @@
 local RunService = game:GetService("RunService")
-local Signals = require("@self/Signals")
+local IsClient = RunService:IsClient() 
 
-type TrackedAspects = {
-    CustomSignals:{Signals.Signaler<any>};
-    RealSignals:{RBXScriptConnection};
-}
+local module = IsClient == true and require(script:WaitForChild("ClientListener")) or require("@self/ServerListener")
 
-local TrackedAspects:TrackedAspects = nil
+export type Replit = {
+    -- Server Methods
+    Check: () -> (boolean, string?);
+    ReplicateTo: (players:{Player}, isntance:Instance) -> {[string]:ReplitInstance}; -- returns a dict mapping config id to status object
 
-do -- Initial Constructor
-    local IsClient = RunService:IsClient() 
-
-    if IsClient == true then
-        TrackedAspects = require(script:WaitForChild("ClientListener"))
-    else
-        TrackedAspects = require("@self/ServerListener")
-        print(`Replit booted up, clients should be listening to signals. use replit.check() to ensure.`)
-    end
-end
-
-local module = {}
-
-export type Server = {
-    Check: () -> (boolean, string?); -- similar to pcall
-    ReplicateTo: (receivers:{Player}, instance:Instance)->{[number]:ReplitInstance}; -- returns dict mapping an id to ReplitInstance, one for each player
+    -- Client Methods
     
 }
 
-export type Client = {
-    ReceiveReplit: ()->();
-}
-
 export type ReplitInstance = {
-    State: {}
+    State:{}
 }
 
-return module :: (Server & Client)
+return module::Replit
