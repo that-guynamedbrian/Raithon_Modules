@@ -25,5 +25,4 @@ export type Replit = {
     Check:() -> (boolean, string?)
 }
 
-
 return module::Replit
