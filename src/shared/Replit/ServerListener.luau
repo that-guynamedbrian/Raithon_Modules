@@ -1,5 +1,3 @@
+local module = {}
 
-return {
-    CustomSignals = {};
-    RealSignals = {};
-}
+return module
