@@ -5,9 +5,19 @@ if IsClient == true then script:WaitForChild("SharedUtils") end
 local Objects = require("@self/SharedUtils")
 local module = IsClient == true and require(script:WaitForChild("ClientListener")) or require("@self/ServerListener")
 ---------------------------------------------------------------------------- BUILDER AND TYPES
+--[=[
+	A library for handling replication
+
+	### Example usage
+
+	```lua
+
+	```
+]=]
 export type Replit = {
     Check:() -> (boolean, string?)
 }
+
 
 export type Status = Objects.Status
 
