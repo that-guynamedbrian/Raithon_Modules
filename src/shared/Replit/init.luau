@@ -21,8 +21,10 @@ end
 
 local module = {}
 
-export type Replit = {
-    Check:() -> (boolean, string?)
+export type Server = {
+    Check: () -> (boolean, string?); -- similar to pcall
+    ReplicateTo: (receivers:{Player}, instance:Instance)->{[number]:ReplitInstance}; -- returns dict mapping an id to ReplitInstance, one for each player
+    
 }
 
 return module::Replit

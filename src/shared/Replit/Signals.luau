@@ -66,11 +66,11 @@ SOFTWARE.
 export type Signal<Parameters...> = {
 	Connect: typeof(
 		-- Connects a function.
-		function(signal: Signal<Parameters...>, callback: (Parameters...) -> ()): Connection end
+		function(signal: Signal<Parameters...>, callback: (Parameters...) -> ()): Connection return nil::any end
 	),
 	Once: typeof(
 		-- Connects a function, then auto-disconnects after the first call.
-		function(signal: Signal<Parameters...>, callback: (Parameters...) -> ()): Connection end
+		function(signal: Signal<Parameters...>, callback: (Parameters...) -> ()): Connection return nil::any end
 	),
 	Wait: typeof(
 		-- Yields the calling thread until the next fire.
@@ -115,7 +115,7 @@ export type Connection = {
 
 type CreateSignal = typeof(
 	-- Creates a new signal.
-	function(): Signal<any> end
+	function(): Signal<any> return nil::any end
 )
 
 -- Spawn function.
