@@ -2,8 +2,8 @@ local RunService = game:GetService("RunService")
 local Signals = require("@self/Signals")
 
 type TrackedAspects = {
-    CustomSignals:{[string]:Signals.Signaler<any>};
-    RealSignals:{[string]:RBXScriptConnection};
+    CustomSignals:{Signals.Signaler<any>};
+    RealSignals:{RBXScriptConnection};
 }
 
 local TrackedAspects:TrackedAspects = nil
@@ -21,10 +21,9 @@ end
 
 local module = {}
 
-export type Server = {
-    Check: () -> (boolean, string?); -- similar to pcall
-    ReplicateTo: (receivers:{Player}, instance:Instance)->{[number]:ReplitInstance}; -- returns dict mapping an id to ReplitInstance, one for each player
-    
+export type Replit = {
+    Check:() -> (boolean, string?)
 }
+
 
 return module::Replit
